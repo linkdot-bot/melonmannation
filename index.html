@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melonman Nation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: black;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: white;
+            border-bottom: 2px solid #ddd;
+        }
+        #logo {
+            height: 50px;
+        }
+        #shop-icon {
+            font-size: 24px;
+            color: black;
+            text-decoration: none;
+        }
+        #hero {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+        .slideshow-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        .fade img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .fade.active img {
+            opacity: 1;
+        }
+        #join-club {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 15px 30px;
+            font-size: 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: none;
+            border-radius: 5px;
+        }
+        #about {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: white;
+            color: black;
+        }
+        #gallery {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: green;
+            color: white;
+        }
+        .video-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            scroll-snap-type: x mandatory;
+        }
+        .video-slider video {
+            width: 300px;
+            scroll-snap-align: start;
+        }
+        /* Footer Styles */
+        footer {
+            background-color: #222;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        .sponsor-logos {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sponsor {
+            width: 120px;
+            margin: 5px;
+            filter: grayscale(100%);
+            cursor: pointer;
+            transition: filter 0.3s;
+        }
+        .sponsor:hover {
+            filter: grayscale(0%);
+        }
+
+        /* Popup Form Styles */
+        #popup-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+        }
+        #popup-form input, #popup-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #popup-form button {
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #success-message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://iili.io/3AoI4PS.md.jpg" alt="Melon Nation Logo" id="logo">
+        <a href="https://melonmanbrand.com" id="shop-icon"><i class="fa-solid fa-bag-shopping"></i></a>
+    </header>
+    
+    <section id="hero">
+        <div class="slideshow-container">
+            <div class="fade active"><img src="https://iili.io/3Ao43Mu.md.jpg" alt="Ross Chastain"></div>
+            <div class="fade"><img src="https://iili.io/3Aorba4.md.jpg" alt="Ross Chastain"></div>
+            <div class="fade"><img src="https://iili.io/3Ao42ne.md.jpg" alt="Ross Chastain"></div>
+            <div class="fade"><img src="https://iili.io/3AorLnn.md.jpg" alt="Ross Chastain"></div>
+            <div class="fade"><img src="https://iili.io/3Ao4Hw7.md.jpg" alt="Ross Chastain"></div>
+            <div class="fade"><img src="https://iili.io/3Ao49uS.md.jpg" alt="Ross Chastain"></div>
+            <div class="fade"><img src="https://iili.io/3AoI4PS.md.jpg" alt="Ross Chastain"></div>
+        </div>
+        <button id="join-club">Join the Club</button>
+    </section>
+    
+    <section id="about">
+        <h2>About</h2>
+        <p>Welcome to the official Ross Chastain Fan Club—where passion meets speed! 🚗💨
+
+            This is the ultimate destination for Melon Nation, the dedicated fans of NASCAR’s most electrifying driver, Ross Chastain. Whether you’ve been following his journey from short-track racing to the grand stage of NASCAR or you just love the thrill of the race, this fan club is for you!
+            
+            Here, you'll find exclusive updates, behind-the-scenes content, fan events, and a vibrant community that shares your love for Ross and his unforgettable moments on the track. Get ready to celebrate every victory, relive every epic move, and be part of a fan base that never backs down.
+            
+            Join the club today and be part of the fastest-growing fan community in NASCAR! 🏁🍉</p>
+    </section>
+
+</section>
+    
+<!-- Popup Form -->
+<div id="popup-form">
+    <h3>Join the Fan Club</h3>
+    <form id="clubForm" action="https://formsubmit.co/rosschastainfanclub@gmail.com" method="POST">
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="text" name="state" placeholder="Your State" required>
+        <textarea name="favorite" placeholder="Favorite Thing About Ross" required></textarea>
+        <input type="hidden" name="_next" value="about:blank">
+        <input type="hidden" name="_captcha" value="false">
+        <button type="submit">Submit</button>
+    </form>
+    <button onclick="closeForm()">Cancel</button>
+</div>
+
+<!-- Success Message -->
+<div id="success-message">Thank you for joining!</div>
+    
+    <footer>
+        <div class="sponsor-logos">
+            <a href="https://www.trackhouse.com/" target="_blank"><img src="https://iili.io/3AxCrjp.png" class="sponsor"></a>
+            <a href="https://www.kubota.com/" target="_blank"><img src="https://iili.io/3AxTmAu.png" class="sponsor"></a>
+            <a href="https://www.nascar.com/" target="_blank"><img src="https://iili.io/3AxTpwb.png" class="sponsor"></a>
+        </div>
+        <p>&copy; 2025 Melonman Nation. All Rights Reserved.</p>
+    </footer>
+    
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll(".fade");
+        function showSlides() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove("active");
+                if (index === slideIndex) {
+                    slide.classList.add("active");
+                }
+            });
+            slideIndex = (slideIndex + 1) % slides.length;
+            setTimeout(showSlides, 3000);
+        }
+        showSlides();
+        
+        window.addEventListener("scroll", () => {
+            const joinButton = document.getElementById("join-club");
+            const heroSection = document.getElementById("hero");
+            const heroRect = heroSection.getBoundingClientRect();
+            if (heroRect.top < window.innerHeight && heroRect.bottom > 0) {
+                joinButton.style.display = "block";
+            } else {
+                joinButton.style.display = "none";
+            }
+        });
+        document.getElementById("join-club").addEventListener("click", function() {
+            document.getElementById("popup-form").style.display = "block";
+        });
+        function closeForm() {
+            document.getElementById("popup-form").style.display = "none";
+        }
+        document.getElementById("clubForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let formData = new FormData(this);
+            fetch(this.action, { method: "POST", body: formData })
+            .then(() => {
+                document.getElementById("popup-form").style.display = "none";
+                document.getElementById("success-message").style.display = "block";
+                setTimeout(() => {
+                    document.getElementById("success-message").style.display = "none";
+                }, 3000);
+            });
+        });
+    </script>
+</body>
+</html>
